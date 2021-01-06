@@ -1,20 +1,30 @@
 import cv2
-import urllib.request
 
-cap = cv2.VideoCapture('http://192.168.1.126:27261/videostream.cgi?user=admin&pwd=888888')
-urlup ='http://192.168.1.126:27261/decoder_control.cgi?loginuse=admin&loginpas=888888&command=0&onestep=1&16099455500550.7579112705690318&_=1609945550056'
-urldown ='http://192.168.1.126:27261/decoder_control.cgi?loginuse=admin&loginpas=888888&command=4&onestep=1&16099455500550.7579112705690318&_=1609945550056'
-urlleft ='http://192.168.1.126:27261/decoder_control.cgi?loginuse=admin&loginpas=888888&command=2&onestep=1&16099455500550.7579112705690318&_=1609945550056'
-urlright ='http://192.168.1.126:27261/decoder_control.cgi?loginuse=admin&loginpas=888888&command=6&onestep=1&16099455500550.7579112705690318&_=1609945550056'
+
+cap = cv2.VideoCapture(0)
+face_detector = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+tracker = cv2.TrackerMedianFlow_create()
+
+onTracking = False
 while True :
     _, frame = cap.read()
+    if not onTracking :
+        gray = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
+        faces = face_detector.detectMultiScale(gray, 1.3,5)
+        for(x, y, w, h) in faces :
+            cv2.rectangle(frame, (x,y), (x + w , y + h), (0, 0, 255), 2)
+            if  tracker.init(frame,(x, y, w, h)) :
+                onTracking = True
+           
+    else :
+        ok, bbox = tracker.update(frame)
+        if ok :
+            p1 = (int(bbox[0]), int(bbox[1]))
+            p2 = (int(bbox[0]+bbox[2]),int(bbox[1]+bbox[3]))
+            cv2.rectangle(frame, p1, p2, (0, 255, 0), 2)
+        else:
+            onTracking =False
+            tracker = cv2.TrackerMedianFlow_create()
+
     cv2.imshow('frame',frame)
-    key = cv2.waitKey(1) &0xFF
-    if key == ord('w') :  #UP
-        urllib.request.urlopen(urlup)
-    if key == ord('a') :  #DOWN
-        urllib.request.urlopen(urldown)
-    if key == ord('s') :  #LEFT
-        urllib.request.urlopen(urlleft)
-    if key == ord('d') :  #RIGHT
-        urllib.request.urlopen(urlright)
+    cv2.waiKey(1)

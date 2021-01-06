@@ -1,7 +1,7 @@
 import cv2
 import urllib.request
 
-cap = cv2.VideoCapture('http://192.168.1.126:44212/videostream.cgi?user=admin&pwd=888888')
+cap = cv2.VideoCapture('http://192.168.1.126:31183/videostream.cgi?user=admin&pwd=888888')
 urlup =''
 urldown =''
 urlleft =''

@@ -1,6 +1,4 @@
 import cv2
-
-
 cap = cv2.VideoCapture(0)
 face_detector = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 tracker = cv2.TrackerMedianFlow_create()

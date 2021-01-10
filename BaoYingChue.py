@@ -3,7 +3,7 @@ import cv2 , os ,numpy as np
 cap = cv2.VideoCapture(0)
 path = './python_cam/image/'
 
-h = s = p = e = 0 
+h = s = p = e =  0 
 while True :
     _, frame =cap.read()
     key = cv2.waitKey(1) & 0xFF

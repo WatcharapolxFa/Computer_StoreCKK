@@ -12,3 +12,4 @@ for j in range(100) :
 t2 = time.time()
 print('TIME [ row vector ]:',(t2,t1)/100)
 
+

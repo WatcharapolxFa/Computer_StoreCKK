@@ -3,7 +3,7 @@ import os
 import numpy as np
 cap = cv2.VideoCapture(0)
 path = './image/'
-z = x = c = v = 0
+z = a = c = v = 0
 while True:
     _, frame = cap.read()
     key = cv2.waitKey(1) & 0xFF
@@ -11,8 +11,8 @@ while True:
         z += 1
         cv2.imwrite(path + 'Anniversary_'+str(z) + '.png', frame)
     if key == ord('x'):
-        x += 1
-        cv2.imwrite(path + 'three_'+str(x) + '.png', frame)
+        a += 1
+        cv2.imwrite(path + 'Three_'+str(a) + '.png', frame)
     if key == ord('c'):
         c += 1
         cv2.imwrite(path + 'month_'+str(c) + '.png', frame)

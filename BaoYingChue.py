@@ -29,6 +29,6 @@ while True:
     if len(D) > 0:
         ans = y[D.index(min(D))]
         if ans != 'else':
-            cv2.putText(frame, ans, (10, 20),
+            cv2.putText(frame, ans, (10, 30),
                         cv2.FONT_HERSHEY_COMPLEX, 1, (255, 0, 0))
     cv2.imshow('frame', frame)

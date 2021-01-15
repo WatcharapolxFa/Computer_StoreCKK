@@ -10,7 +10,7 @@ while True:
     if key == ord('z'):
         z += 1
         cv2.imwrite(path + 'Anniversary_'+str(z) + '.png', frame)
-    if key == ord('x'):
+    if key == ord('a'):
         a += 1
         cv2.imwrite(path + 'Three_'+str(a) + '.png', frame)
     if key == ord('c'):

@@ -3,22 +3,22 @@ import os
 import numpy as np
 cap = cv2.VideoCapture(0)
 path = './image/'
-h = s = p = e = 0
+z = x = c = v = 0
 while True:
     _, frame = cap.read()
     key = cv2.waitKey(1) & 0xFF
     if key == ord('z'):
-        h += 1
-        cv2.imwrite(path + 'Anniversary_'+str(h) + '.png', frame)
+        z += 1
+        cv2.imwrite(path + 'Anniversary_'+str(z) + '.png', frame)
     if key == ord('x'):
-        s += 1
-        cv2.imwrite(path + 'three_'+str(s) + '.png', frame)
+        x += 1
+        cv2.imwrite(path + 'three_'+str(x) + '.png', frame)
     if key == ord('c'):
-        p += 1
-        cv2.imwrite(path + 'month_'+str(p) + '.png', frame)
+        c += 1
+        cv2.imwrite(path + 'month_'+str(c) + '.png', frame)
     if key == ord('v'):
-        e += 1
-        cv2.imwrite(path + 'fahsai_'+str(e) + '.png', frame)
+        v += 1
+        cv2.imwrite(path + 'fahsai_'+str(v) + '.png', frame)
     y = []
     D = []
     for fname in os.listdir(path):

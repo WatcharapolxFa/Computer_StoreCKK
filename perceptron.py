@@ -8,3 +8,5 @@ while not done:
     for i, x in enumerate(X):
         if T[i]*np.dot(x, W) < 0:
             W += x
+            done = False
+print(W)

@@ -9,4 +9,5 @@ while not done:
         if T[i]*np.dot(x, W) < 0:
             W += x
             done = False
-print(W)
+for x in X:
+    print(np.dot(W, x))

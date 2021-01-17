@@ -14,10 +14,13 @@ def display(maze, i, j):
     plt.cla()
 
 
-maze = np.array([list('1E11111111111'),
-                 list('1011111111111'),
-                 list('10000000000S1'),
-                 list('1111111111111')])
+maze = np.array([list('1E111111111'),
+                 list('10110010001'),
+                 list('10100100101'),
+                 list('10110010101'),
+                 list('10100010101'),
+                 list('100010001S1'),
+                 list('11111111111')])
 
 stack = []
 start = np.where(maze == 'S')

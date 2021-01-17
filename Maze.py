@@ -14,12 +14,20 @@ def display(maze, i, j):
     plt.cla()
 
 
+def isconnect(a, b):
+    i, j = a
+    for m, n in zip([i-1, i, i+1, i], [j, j-1, j, j+1]):
+        if m == b[0] and n == b[1]:
+            return True
+    return False
+
+
 maze = np.array([list('1E111111111'),
                  list('10110010001'),
-                 list('10100100101'),
+                 list('10000100101'),
                  list('10110010101'),
                  list('10100010101'),
-                 list('100010001S1'),
+                 list('101010001S1'),
                  list('11111111111')])
 
 stack = []
@@ -38,5 +46,10 @@ while maze[i, j] != 'E':
     else:
         print('Cannot exit! ')
         break
+    for[I, J] in path[::-1]:
+        if isconnect([i, j], [I, J]):
+            break
+        path.pop()
+        display(maze, path[-1][0], path[-1][1])
     display(maze, i, j)
 plt.show()

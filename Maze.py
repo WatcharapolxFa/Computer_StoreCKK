@@ -1,6 +1,5 @@
 import numpy as np
 from matplotlib import pyplot as plt
-from numpy.core.shape_base import stack
 
 
 def display(maze, i, j):
@@ -21,8 +20,8 @@ maze = np.array([list('1E11111111111'),
                  list('1111111111111')])
 
 stack = []
-st = np.where(maze == 'S')
-i, j = stack[0][0], stack[1][0]
+start = np.where(maze == 'S')
+i, j = start[0][0], start[1][0]
 display(maze, i, j)
 path = []
 while maze[i, j] != 'E':
@@ -37,4 +36,4 @@ while maze[i, j] != 'E':
         print('Cannot exit! ')
         break
     display(maze, i, j)
-plt.show
+plt.show()

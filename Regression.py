@@ -7,3 +7,8 @@ plt.plot(x, y, '.')
 
 x = np.vstack((x, np.ones(n))).T
 W = np.linalg.inv(X.T@X)@X.T@y
+print(W)
+z = X @ W
+plt.plot(X, Z, '.r')
+
+plt.show()
